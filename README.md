@@ -17,7 +17,9 @@ $ npm install  # Install Node.js components listed in ./package.json
 
 #### Create a db config file
 Before you start you will need to create a database config file:
-- configs/db.json
+```shell
+configs/db.json
+```
 
 The file has all the info about the MySQL database. Right now there is only one environment, production or development.
 
@@ -49,7 +51,10 @@ $ node index.js
 ## User guide
 #### SQL injection (SQLi)
 
-{ work in progress.. }
+{ 
+  work in progress.. 
+  You will find here all info about SQLi
+}
 
 ## Questions and issues
 Feel free to contact me in [twitter](https://twitter.com/gbuszmicz) or [create an issue](https://github.com/gbuszmicz/insecure-blog-project/issues/new)
