@@ -8,7 +8,7 @@ This is an insecure Web application for training and testing Web security. It ha
 
 
 ## Installation
-#### Clone the repo:
+#### Clone the repo
 ```shell
 $ git clone https://github.com/gbuszmicz/insecure-blog-project.git myApp
 $ cd myApp
@@ -49,6 +49,7 @@ $ node index.js
 ## User guide
 #### SQL injection (SQLi)
 
+{ work in progress.. }
 
 ## Questions and issues
 Feel free to contact me in [twitter](https://twitter.com/gbuszmicz) or [create an issue](https://github.com/gbuszmicz/insecure-blog-project/issues/new)
