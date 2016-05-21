@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+  <head>
+    <% include ./partials/header.html %>
+    <title><%= post.title %></title>
+  </head>
+  <body>
+    <% include ./partials/navbar.html %>
+    <% include ./partials/page-header.html %>
+
+    <!-- Main Content -->
+    <div class="container post-wrapper">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+          <article id="post-<%= post.id %>" class="post status-<%= post.status %>">
+            <section class="post-header">
+              <div class="post-author">
+                <a href="/<%= post.username %>">
+                  <div class="avatar">
+                    <span class="ratio img-responsive img-circle" alt="Author avatar"
+                      style="background-image: url(<%= post.avatar %>);">
+                    </span>
+                  </div>
+                </a>
+                <div class="author-name">
+                  <a href="/<%= post.username %>"><%= post.firstname %> <%= post.lastname %></a>
+                </div>
+              </div>
+
+              <div class="post-meta">
+                <span class="post-date"><%= fromNow(post.date) %></span>
+                <span class="mid-dot-divider"></span>
+                <span class="read-time">11 min read</span>
+              </div>
+
+              <h1 class="post-title">
+                <a href="/p/<%= post.id %>/<%= slug(post.title) %>" rel="bookmark"><%- post.title %></a>
+              </h1>
+            </section>
+
+            <section class="post-content"><%- post.body %></section>
+
+            <section class="post-footer">
+              <span class="post-tags">
+                <% if(post.tags) { %>
+                  <% var postTags = post.tags.split(",") %>
+                  <% postTags.forEach(function(tag){ %>
+                    <a href="/search?q=tag/<%= tag.trim() %>" class="tag-link">#<%= tag.trim() %></a>
+                  <% }); %>
+                <% } %>
+              </span>
+            </section>
+          </article>
+
+        </div>
+      </div>
+    </div>
+    
+    <% include ./partials/footer.html %>
+    <script>
+    $(function() {
+      $('article').readingTime({
+        readingTimeTarget: $(this).find('.read-time'),
+        lessThanAMinuteString: '1 min'
+      });
+    });
+  </script>
+  </body>
+</html>

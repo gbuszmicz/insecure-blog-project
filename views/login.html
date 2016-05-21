@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+  <head>
+    <% include ./partials/header.html %>
+    <title>Login Form</title>
+  </head>
+  <body class="login">
+    <% include ./partials/navbar.html %>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+
+          <fieldset id="login">
+            <h1>Login form</h1>
+            <div class="message"></div>
+            <form method="POST" data-async action="/auth/login">
+              <p>
+                <input type="text" id="username" name="username" class="form-control" required 
+                  placeholder="Enter your username" />
+              </p>
+              <p>
+                <input type="password" id="password" name="password" class="form-control" required 
+                  placeholder="Enter your password" />
+              </p>
+              <p class="submit">
+                <input type="submit" value="Let me in">
+              </p>
+            </form>
+          </fieldset>
+
+       </div>
+      </div>
+    </div>
+
+    <% include ./partials/footer.html %>
+    <script src="/javascripts/md5.min.js"></script>
+    <script src="/javascripts/login.js"></script>
+  </body>
+</html>

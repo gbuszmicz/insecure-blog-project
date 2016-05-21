@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+  <head>
+    <% include ./partials/header.html %>
+    <title>Insecure Blog Project</title>
+  </head>
+  <body>
+    <% include ./partials/navbar.html %>
+    <% include ./partials/user-header.html %>
+
+        <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <% if(locals.search) { %>
+          <% include ./partials/search-result.html %>
+        <% } %>
+
+    <ul class="posts-loop">
+      <% if(posts.length == 0) { %>
+        <div class="no-results">Posts not found</div>
+      <% } %>
+      <% posts.forEach(function(post) { %>
+
+        <li class="post">
+          <div class="post-author">
+            <a href="/<%= post.username %>">
+              <div class="avatar">
+                <span class="ratio img-responsive img-circle" alt="Author avatar"
+                  style="background-image: url(<%= post.avatar %>);">
+                </span>
+              </div>
+            </a>
+            <div class="author-name">
+              <a href="/<%= post.username %>"><%= post.firstname %> <%= post.lastname %></a>
+              <span class="post-date"><%= fromNow(post.date) %></span>
+            </div>
+          </div>
+
+          <div class="post-content">
+            <a href="/p/<%= post.id %>/<%= slug(post.title) %>" class="post-title"><%- post.title %></a>
+            <div class="post-body"><%- truncate(post.body, 200, 700) %></div>
+          </div>
+        </li>
+
+      <% }); %>
+    </ul>
+    </section>
+
+    <% include ./partials/footer.html %>
+  </body>
+</html>

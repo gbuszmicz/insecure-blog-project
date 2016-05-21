@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+  <head>
+    <% include ./partials/header.html %>
+    <title>Login Form</title>
+  </head>
+  <body>
+    <% include ./partials/navbar.html %>
+
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+
+          <fieldset id="login">
+            <h1>Login form</h1>
+            <div class="message"></div>
+            <form method="POST" data-async action="/auth/login">
+              <p>
+                <input type="text" id="username" name="username" class="form-control" required 
+                  placeholder="Enter your username" />
+              </p>
+              <p>
+                <input type="password" id="password" name="password" class="form-control" required 
+                  placeholder="Enter your password" />
+              </p>
+              <p class="submit">
+                <input type="submit" value="Let me in">
+              </p>
+            </form>
+          </fieldset>
+
+       </div>
+      </div>
+    </div>
+
+
+
+    
+    <section class="container">
+      <fieldset id="login" class="row">
+        <h2>Login</h2>
+        <div class="message"></div>
+        <form method="POST" data-async action="/auth/login">
+          <p>
+            <input type="text" id="username" name="username" class="form-control" required placeholder="Username">
+          </p>
+          <p>
+            <input type="password" id="password" name="password" class="form-control" required placeholder="Password">
+          </p>
+          <p class="submit">
+            <input type="submit" value="Login">
+          </p>
+        </form>
+
+      </fieldset>
+    </section>
+
+    <% include ./partials/footer.html %>
+    <script src="/javascripts/login.js"></script>
+  </body>
+</html>

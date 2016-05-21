@@ -1,0 +1,17 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="profile-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="profile-heading">
+          <a href="/<%= homeUser.username %>" class="img-responsive">
+            <img src="<%= homeUser.avatar %>" class="img-circle" width="174" alt="User profile picture" />
+          </a>
+          <h1><%= homeUser.firstname %> <%= homeUser.lastname %></h1>
+          <span class="profile-description"><%- homeUser.description %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

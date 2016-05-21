@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+  <head>
+    <% include ./partials/header.html %>
+    <title><%= post.title %></title>
+  </head>
+  <body>
+    <% include ./partials/navbar.html %>
+    <section class="container">
+      <div class="post">
+        <div class="post-author">
+          <a href="/<%= post.username %>">
+            <div class="avatar">
+              <span class="ratio img-responsive img-circle" alt="Author avatar"
+                style="background-image: url(<%= post.avatar %>);">
+              </span>
+            </div>
+          </a>
+          <div class="author-name">
+            <a href="/<%= post.username %>"><%= post.firstname %> <%= post.lastname %></a>
+            <span class="post-date"><%= fromNow(post.date) %></span>
+          </div>
+        </div>
+        <div class="post-content">
+          <a href="/p/<%= post.id %>/<%= slug(post.title) %>" class="post-title"><%- post.title %></a>
+          <div class="post-body"><%- post.body %></div>
+        </div>
+      </div>
+    </section>
+
+    <% include ./partials/footer.html %>
+    <script>
+      console.log("<%- JSON.stringify(locals.sPost) %>")
+    </script>
+  </body>
+</html>

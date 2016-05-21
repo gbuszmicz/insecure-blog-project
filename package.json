@@ -1,0 +1,34 @@
+{
+  "name": "insecure-blog-project",
+  "version": "1.0.0",
+  "description": "A simple blog for Web security training",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4",
+    "npm": ">=2 <4"
+  },
+  "author": "Gonzalo F. Buszmicz <gbuszmicz@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "eslint": "node_modules/eslint/bin/eslint.js controllers",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-rate-limit": "^2.1.2",
+    "express-session": "^1.13.0",
+    "express-validation": "^0.6.0",
+    "joi": "^8.0.5",
+    "moment": "^2.13.0",
+    "mysql": "^2.10.2",
+    "sanitize-html": "^1.11.4",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.9.0",
+    "grunt": "^1.0.1",
+    "grunt-mysql-runfile": "^0.2.1"
+  }
+}

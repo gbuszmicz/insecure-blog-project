@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+  <head>
+    <% include ./partials/header.html %>
+    <title><%= locals.title %></title>
+  </head>
+  <body>
+    <% include ./partials/navbar.html %>
+    <% include ./partials/user-header.html %>
+
+    <!-- Main Content -->
+    <section class="container">
+    <div class="user">
+
+      <div class="post-author">
+        <div class="avatar">
+          <span class="ratio img-responsive img-circle" alt="User avatar"
+            style="background-image: url(<%= homeUser.avatar %>);">
+          </span>
+        </div>
+        <div class="author-name"><%= homeUser.firstname %> <%= homeUser.lastname %></div>
+        <div class="author-description"><%- homeUser.description %></div>
+      </div>
+
+    </div>
+    <ul class="user-posts-loop">
+      <% posts.forEach(function(post) { %>
+        <li class="post" id="<%= post.id %>">
+          <% if(locals.user) { %>
+            <% if(homeUser.username == locals.user.username) { %>
+              <div class="admin-panel">
+                <div class="btn-group btn-group-xs" role="group">
+                  <button type="button" class="btn btn-info"
+                    data-action="edit" 
+                    data-link="/p/<%= post.id %>/<%= slug(post.title) %>"
+                    data-postid="<%= post.id %>">Edit
+                  </button>
+                  <button type="button" data-action="delete" data-postid="<%= post.id %>" class="btn btn-danger">
+                    Delete</button>
+                </div>
+              </div>
+            <% } %>
+          <% } %>
+          <div class="post-author">
+            <a href="/<%= post.username %>">
+              <div class="avatar">
+                <span class="ratio img-responsive img-circle" alt="Author avatar"
+                  style="background-image: url(<%= homeUser.avatar %>);">
+                </span>
+              </div>
+            </a>
+            <div class="author-name">
+              <a href="/<%= post.username %>"><%= homeUser.firstname %> <%= homeUser.lastname %></a>
+              <span class="post-date"><%= fromNow(post.date) %></span>
+            </div>
+          </div>
+
+          <div class="post-content">
+            <a href="/p/<%= post.id %>/<%= slug(post.title) %>" class="post-title"><%- post.title %></a>
+            <div class="post-body"><%- truncate(post.body, 200, 700) %></div>
+          </div>
+        </li>
+      <% }); %>
+    </ul>
+    </section>
+
+    <% include ./partials/footer.html %>
+    <script src="../javascripts/homepage.js"></script>
+  </body>
+</html>

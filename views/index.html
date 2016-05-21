@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+  <head>
+    <% include ./partials/header.html %>
+    <title>Insecure Blog Project</title>
+  </head>
+  <body>
+    <% include ./partials/navbar.html %>
+    <% include ./partials/page-header.html %>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <% if(locals.search) { %>
+          <% include ./partials/search-result.html %>
+        <% } %>
+
+        <% if(posts.length == 0) { %>
+          <div class="no-results">Posts not found</div>
+        <% } %>
+
+        <% posts.forEach(function(post) { %>
+          <article id="post-<%= post.id %>" class="post status-<%= post.status %>" 
+            data-target="/p/<%= post.id %>/<%= slug(post.title) %>">
+            <section class="post-header">
+              <div class="post-author">
+                <a href="/<%= post.username %>">
+                  <div class="avatar">
+                    <span class="ratio img-responsive img-circle" alt="Author avatar"
+                      style="background-image: url(<%= post.avatar %>);">
+                    </span>
+                  </div>
+                </a>
+                <div class="author-name">
+                  <a href="/<%= post.username %>"><%= post.firstname %> <%= post.lastname %></a>
+                </div>
+              </div>
+
+              <div class="post-meta">
+                <span class="post-date"><%= fromNow(post.date) %></span>
+                <span class="mid-dot-divider"></span>
+                <span class="read-time"></span><span class="read-time-span">&nbsp;read</span>
+              </div>
+
+              <h1 class="post-title">
+                <a href="/p/<%= post.id %>/<%= slug(post.title) %>" rel="bookmark"><%- post.title %></a>
+              </h1>
+            </section>
+
+            <section class="post-content"><%- truncate(post.body, 400, 800) %></section>
+
+            <section class="post-footer">
+              <span class="post-tags">
+                <% if(post.tags) { %>
+                  <% var postTags = post.tags.split(",") %>
+                  <% postTags.forEach(function(tag){ %>
+                    <a href="/search?q=tag/<%= tag.trim() %>" class="tag-link">#<%= tag.trim() %></a>
+                  <% }); %>
+                <% } %>
+              </span>
+            </section>
+          </article>
+        <% }); %>
+        <% include ./partials/pagination.html %>
+          
+        </div>
+      </div>
+    </div>
+
+    <% include ./partials/footer.html %>
+    <script>
+      $(function() {
+        $('article').each(function() {
+          $(this).readingTime({
+            readingTimeTarget: $(this).find('.read-time'),
+            remotePath: $(this).attr('data-target'),
+            remoteTarget: '.post-content',
+            lessThanAMinuteString: '1 min'
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

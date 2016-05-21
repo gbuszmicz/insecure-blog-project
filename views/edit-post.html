@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+  <head>
+    <% include ./partials/header.html %>
+    <title>Edit post</title>
+  </head>
+  <body>
+    <% include ./partials/navbar.html %>
+    <section class="container">
+      <fieldset id="new-post" class="row">
+        <h2>Edit post</h2>
+        <div class="message"></div>
+        <form method="POST" data-async action="/p/<%= locals.post.id %>/<%= slug(locals.post.title) %>/edit">
+          <p>
+            <input type="text" id="title" name="title" class="form-control" 
+              required placeholder="Title for your post" value="<%= locals.post.title %>">
+          </p>
+          <p>
+            <textarea rows=10 id="body" name="body" class="form-control" 
+              required placeholder="Content"><%= locals.post.body %></textarea>
+          </p>
+          <p class="submit">
+            <input type="submit" value="Edit this post">
+          </p>
+        </form>
+
+      </fieldset>
+    </section>
+
+    <% include ./partials/footer.html %>
+    <script src="/javascripts/posts.js"></script>
+  </body>
+</html>

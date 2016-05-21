@@ -1,0 +1,14 @@
+<!-- Pager -->
+<% if(locals.pagination && locals.pagination.totalPages > 1) { %>
+<nav>
+  <ul class="pager">
+    <% if(locals.pagination.previous !== undefined) { %>
+      <li class="previous"><a href="/?page=<%= pagination.previous %>"><span aria-hidden="true">&larr;</span> Newer</a></li>
+    <% } %>
+    <li class="page-counter">Page <span><%= pagination.current %></span> of <span><%= pagination.totalPages %></span></li>
+    <% if(locals.pagination.next !== undefined) { %>
+    <li class="next"><a href="/?page=<%= pagination.next %>">Older <span aria-hidden="true">&rarr;</span></a></li>
+    <% } %>
+  </ul>
+</nav>
+<% } %>

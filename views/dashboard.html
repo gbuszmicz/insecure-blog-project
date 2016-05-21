@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+  <head>
+    <% include ./partials/header.html %>
+    <title>Dashboard</title>
+  </head>
+  <body class="login">
+    <% include ./partials/navbar.html %>
+
+    <section class="container">
+      <div class="dashboard">
+        <h1>Dashboard</h1>       
+        <pre>
+          <%- JSON.stringify(locals.userInfo, null, 2) %>
+        </pre>
+        <p>User is admin: <span style="font-weight: bold;"><%= locals.isAdmin %></span></p>
+      </div>
+    </section>
+    <% include ./partials/footer.html %>
+  </body>
+</html>

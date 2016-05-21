@@ -1,0 +1,11 @@
+<section class="admin-panel">
+  <div class="btn-group btn-group-xs" role="group">
+    <button type="button" class="btn btn-info"
+      data-action="edit" 
+      data-link="/p/<%= post.id %>/<%= slug(post.title) %>"
+      data-postid="<%= post.id %>">Edit
+    </button>
+    <button type="button" data-action="delete" data-postid="<%= post.id %>" class="btn btn-danger">
+      Delete</button>
+  </div>
+</section>
