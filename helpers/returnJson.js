@@ -1,7 +1,7 @@
 /*
- * @status: the status to return: Error or Success generally
- * @message: message asociated to the status
- * @obj: option more thing to return
+ * @status:   the status to return: Error or Success
+ * @message:  message associated with @status
+ * @obj:      optional more things to return
  */
 var returnJson = function(status, message, obj) {
   var json = {

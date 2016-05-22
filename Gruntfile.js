@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     db_config: grunt.file.readJSON('configs/db.json'), // Load db info
+
     mysqlrunfile: {
       options: {
         connection: {
@@ -13,12 +14,29 @@ module.exports = function(grunt) {
         }
       },
       populateDb: {
-        src: ['configs/dump.sql']
+        src: ['backups/dump.sql']
+      }
+    },
+    
+    mysqldump: {
+      local: {
+        host: '<%= db_config.mysql.host %>',
+        user: '<%= db_config.mysql.user %>',
+        pass: '<%= db_config.mysql.password %>',
+        port: '<%= db_config.mysql.port %>',
+        dest: 'configs/',
+        databases: [
+          '<%= db_config.mysql.database %>'
+        ]
       }
     }
   })
 
+  // Restore backup
   grunt.loadNpmTasks('grunt-mysql-runfile');
-  grunt.registerTask('default', ['mysqlrunfile:populateDb']);
+  grunt.registerTask('db_restore', ['mysqlrunfile:populateDb']);
   
+  // Create backup. Requires mysqldump
+  grunt.loadNpmTasks('grunt-mysqldump');
+  grunt.registerTask('db_backup', ['mysqldump:local']);
 };

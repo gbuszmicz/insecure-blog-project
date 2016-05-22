@@ -30,9 +30,9 @@ exports.getSearch = function (req, res) {
           "tags LIKE '%" +searchKeyword+ "%' "+
           ") "+
           "ORDER BY posts.date DESC";
-  } else
+  } 
   // Check if keyword is a user
-  if(startsWith(keyword, 'user/')) {
+  else if(startsWith(keyword, 'user/')) {
     logger.debug('-- searching a user')
     var searchKeyword = keyword.split('/')[1];
     sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar FROM posts "+
@@ -42,7 +42,9 @@ exports.getSearch = function (req, res) {
           "users.username LIKE '%" +searchKeyword+ "%' "+
           ") "+
           "ORDER BY posts.date DESC";
-  } else {
+  } 
+  // Search everywhere
+  else {
     sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar FROM posts "+
           "JOIN users ON posts.userId = users.id "+
           "WHERE posts.status = 'Published' "+
@@ -56,19 +58,21 @@ exports.getSearch = function (req, res) {
           ") "+
           "ORDER BY posts.date DESC";    
   }
-  logger.debug(sql)
+  // For testing log the query
+  // logger.debug(sql)
 
   db.query(sql, function(err, posts) {
     if(err)
       return res.send(
         returnJson('Error', err.message)
       )
-    if(posts.length > 0) {
-      posts.forEach(function(p) {
-        p.body = sanitizeHtml(p.body, defaultSanitizeOptions),
-        p.title = sanitizeHtml(p.title, defaultSanitizeOptions)
-      })
-    }
+    // Sanitize response
+    // if(posts.length > 0) {
+    //   posts.forEach(function(p) {
+    //     p.body = sanitizeHtml(p.body, defaultSanitizeOptions),
+    //     p.title = sanitizeHtml(p.title, defaultSanitizeOptions)
+    //   })
+    // }
     res.render('index', {
       search:keyword,
       posts:posts
@@ -78,7 +82,7 @@ exports.getSearch = function (req, res) {
 
 // GET / => homepage
 exports.getHome = function (req, res) {
-  // -- for pagination. Only index so far
+  // --- start pagination. Only index so far
   var numRows; 
   var queryPagination;
   var numPerPage = 10;
@@ -87,7 +91,7 @@ exports.getHome = function (req, res) {
   var skip = page * numPerPage;
   var limit = skip + ',' + (skip + numPerPage);
   var sqlCountPosts = "SELECT count(*) as numRows FROM posts";
-  // -- for pagination
+  // --- end pagination
 
   db.query(sqlCountPosts, function(err, results) {
     if(err) {
@@ -96,6 +100,8 @@ exports.getHome = function (req, res) {
         returnJson('Error', err.message)
       )
     }
+
+    // --- start pagination
     numRows = results[0].numRows;
     numPages = Math.ceil(numRows / numPerPage);
     console.log('number of pages:', numPages + ' (selected page: '+page+')');
@@ -104,13 +110,15 @@ exports.getHome = function (req, res) {
         returnJson('Error', '404 - Page not found')
       )
     }
+    // --- end pagination
 
     var sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar FROM posts "+
               "JOIN users ON posts.userId = users.id "+
               "WHERE posts.status = 'Published' "+
               "ORDER BY posts.date DESC "+
               "LIMIT " + limit;
-    logger.debug(sql)
+    // For testing log the query
+    // logger.debug(sql)
 
     db.query(sql, function(err, posts) {
       if(err) {
@@ -119,13 +127,14 @@ exports.getHome = function (req, res) {
           returnJson('Error', err.message)
         )
       }
-      // logger.debug(posts)
+      // No posts found
       if(posts.length === 0) {
         return res.send(
           returnJson('Error', '404 - Posts not found')
         )
       }
 
+      // --- start pagination
       var pagination;
       if (page < numPages) {
         pagination = {
@@ -141,10 +150,13 @@ exports.getHome = function (req, res) {
           err: 'queried page ' + page + ' is >= to maximum page number ' + numPages
         }
       }
-      posts.forEach(function(p) {
-        p.body = sanitizeHtml(p.body, defaultSanitizeOptions),
-        p.title = sanitizeHtml(p.title, defaultSanitizeOptions)
-      })
+      // --- end pagination
+
+      // Sanitize response
+      // posts.forEach(function(p) {
+      //   p.body = sanitizeHtml(p.body, defaultSanitizeOptions),
+      //   p.title = sanitizeHtml(p.title, defaultSanitizeOptions)
+      // })
 
       res.render('index', {
         posts:posts,
@@ -165,14 +177,18 @@ exports.getUserHomepage = function (req, res) {
                  "ORDER BY date DESC";
 
   db.query(userSql, function(err, user) {
-    if(err)
+    if(err) {
       return res.send(
         returnJson('Error', err.message)
-      )
-    if(user.length === 0) 
+      )      
+    }
+    // No user found
+    if(user.length === 0) {
       return res.send(
         returnJson('Error', '404 - User not found')
       )
+    }
+    // User found! Now get posts for that user
     db.query(postsSql,[user[0].id], function(err, posts) {
       if(err) {
         logger.error(err.message);
@@ -180,10 +196,11 @@ exports.getUserHomepage = function (req, res) {
           returnJson('Error', err.message)
         )
       }
-      posts.forEach(function(p) {
-        p.body = sanitizeHtml(p.body, defaultSanitizeOptions),
-        p.title = sanitizeHtml(p.title, defaultSanitizeOptions)
-      })
+      // Sanitize response
+      // posts.forEach(function(p) {
+      //   p.body = sanitizeHtml(p.body, defaultSanitizeOptions),
+      //   p.title = sanitizeHtml(p.title, defaultSanitizeOptions)
+      // })
       res.render('homepage', {
         homeUser: user[0],
         posts: posts,

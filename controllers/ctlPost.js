@@ -16,7 +16,8 @@ exports.postNew = function(req, res) {
   var tags = req.body.tags;
   var sql  = "INSERT INTO posts (title, body, tags, userId, status) "+
              "VALUES ('"+title+"','"+body+"','"+tags+"','"+req.user.id+"','Published')";
-  logger.debug(sql)
+  // For testing log the query
+  // logger.debug(sql)
 
   db.query(sql, function(err, result) {
     if(err) {
@@ -33,7 +34,8 @@ exports.postNew = function(req, res) {
 exports.getDelete = function(req, res) {
   var sql = "DELETE FROM posts "+
              "WHERE id = " +req.params.postid;
-  logger.debug(sql)
+  // For testing log the query           
+  // logger.debug(sql)
 
   db.query(sql, function(err, result) {
     if(err) {
@@ -83,8 +85,10 @@ exports.postEdit = function(req, res) {
   var title = req.body.title;
   var body = req.body.body;
   var body = req.body.tags;
-  var sql  = "UPDATE posts SET title='" +title+ "', body='" +body+ "', tags='" +tags+ "' WHERE id='" +req.params.postid+ "'";
-  logger.debug(sql)
+  var sql  = "UPDATE posts SET title='" +title+ "', body='" +body+ "', tags='" +tags+ "' "+
+             "WHERE id='" +req.params.postid+ "'";
+  // For testing log the query
+  // logger.debug(sql)
 
   db.query(sql, function(err, result) {
     if(err) {
@@ -104,7 +108,7 @@ exports.postEdit = function(req, res) {
   })
 }
 
-// TODO. If no slug in URL => redirect to /postid/slug (HTML5 history.pushState)
+// TODO: if no slug in URL => redirect to /postid/slug (check HTML5 history.pushState)
 // GET /p/5/post-five-slug-title
 exports.getPostById = function(req, res) {
   // var postId = db.escape(req.params.postid);
@@ -113,6 +117,7 @@ exports.getPostById = function(req, res) {
   var sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar FROM posts "+
              "INNER JOIN users ON posts.userId = users.id "+
              "WHERE posts.id = " +postId;
+  // For testing log the query
   logger.debug(sql)
 
   db.query(sql, function(err, post) {
@@ -121,16 +126,17 @@ exports.getPostById = function(req, res) {
         returnJson('Error', err.message)
       )      
     }
-
+    // No post found
     if(post.length === 0) {
       return res.send(
         returnJson('Error', '404 - Post not found')
       )
     }
-    post.forEach(function(p) {
-      p.body = sanitizeHtml(p.body, defaultSanitizeOptions),
-      p.title = sanitizeHtml(p.title, defaultSanitizeOptions)
-    })
+    // Sanitize response
+    // post.forEach(function(p) {
+    //   p.body = sanitizeHtml(p.body, defaultSanitizeOptions),
+    //   p.title = sanitizeHtml(p.title, defaultSanitizeOptions)
+    // })
     res.render('post', {
       post:post[0]
     })

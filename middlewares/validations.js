@@ -1,3 +1,4 @@
+// Post validation middleware
 var Joi = require('joi');
 
 module.exports.post = {

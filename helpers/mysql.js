@@ -1,4 +1,3 @@
-
 var logger = require('../helpers/logger');
 var mysql = require('mysql');
 var db_config = require('../configs/db.json') || {};

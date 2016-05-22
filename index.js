@@ -1,9 +1,9 @@
 // process.env.MODE = 'info';  // == Production mode
-process.env.MODE = 'debug'; // For debug logging
+process.env.MODE = 'debug';    // == Development mode
 
 var express = require('express');
 var bodyParser = require('body-parser');
-var session = require('express-session'); // No need for cookie-parser since version 1.5.0
+var session = require('express-session'); // No need for cookie-parser since v1.5.0
 var logger = require('./helpers/logger');
 var errors = require('./helpers/nodeErrors');
 var authLimiter = require('./middlewares/rateLimit').authLimiter; // Limit for auth routes

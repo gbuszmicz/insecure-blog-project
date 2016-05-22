@@ -29,6 +29,7 @@
   "devDependencies": {
     "eslint": "^2.9.0",
     "grunt": "^1.0.1",
-    "grunt-mysql-runfile": "^0.2.1"
+    "grunt-mysql-runfile": "^0.2.1",
+    "grunt-mysqldump": "^0.1.0"
   }
 }

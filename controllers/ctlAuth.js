@@ -5,7 +5,6 @@ var isAuthenticated = require('../middlewares/security').isAuthenticated;
 
 // GET /auth/login
 exports.getLogin = function(req, res) {
-  // logger.debug("getting login page", {user:req.user, session:req.session})
   if(req.user && req.user.isAuthenticated) return res.redirect('/dashboard');
   return res.render('login')
 }

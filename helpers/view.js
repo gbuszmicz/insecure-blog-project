@@ -19,9 +19,10 @@ module.exports = function(app) {
       .replace(/\-\-+/g, '-');        // Replace multiple - with single -
   }
 
-  // Truncate long posts. Ejs already has a truncate filter. Overwrite it.
+  // Truncate long posts. 
+  // Ejs already has a truncate filter. Overwrite it.
   app.locals.truncate = function(str, minLen, maxLen) {
-    minLen = minLen || 300;
+    minLen = minLen || 400;
     maxLen = maxLen || 600;
     var len = parseInt(Math.random() * (maxLen - minLen) + minLen);
     return (typeof str === 'string' && str.length > maxLen ? str.substring(0,len)+"..." : str)
@@ -29,7 +30,7 @@ module.exports = function(app) {
 
     // Truncate long posts
   app.locals.stringToArray = function(str, minLen, maxLen) {
-    minLen = minLen || 300;
+    minLen = minLen || 400;
     maxLen = maxLen || 600;
     var len = parseInt(Math.random() * (maxLen - minLen) + minLen);
     return (typeof str === 'string' && str.length > maxLen ? str.substring(0,len)+"..." : str)
