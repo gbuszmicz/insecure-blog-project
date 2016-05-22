@@ -1,5 +1,5 @@
-// process.env.MODE = 'info';  // == Production mode
-process.env.MODE = 'debug';    // == Development mode
+// Set environment. Default = dev
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -9,6 +9,17 @@ var errors = require('./helpers/nodeErrors');
 var authLimiter = require('./middlewares/rateLimit').authLimiter; // Limit for auth routes
 var ejs = require('ejs');
 var app = express();
+
+if(process.env.NODE_ENV === 'development') {
+  logger.info('-------------------------------------------------------------');
+  logger.info('----------------------|| DEVELOPMENT ||----------------------');
+  logger.info('-------------------------------------------------------------');
+}
+if(process.env.NODE_ENV === 'production') {
+  logger.info('-------------------------------------------------------------');
+  logger.info('----------------------|| PRODUCTION ||-----------------------');
+  logger.info('-------------------------------------------------------------');
+}
 
 app.set('views', __dirname + '/views');
 app.engine('.html', ejs.__express);

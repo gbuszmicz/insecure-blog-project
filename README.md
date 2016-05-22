@@ -13,15 +13,13 @@ $ cd myApp
 $ npm install  # Install Node.js components listed in ./package.json
 ```
 
-#### Create a db config file
-Before you start you will need to create a database config file:
+#### Create a production environment file
+If you are planning on running this app in production mode you have to create a file storing all the information about your db:
 ```shell
-configs/db.json
+env/production.json
 ```
 
-The file has all the info about the MySQL database. Right now there is only one environment, production or development.
-
-Here is an example of db.json:
+The production.json file has the same structure that env/development.json file:
 ```javascript
 {
   "mysql": {
@@ -56,14 +54,14 @@ Hey! I'm your first Markdown document in **StackEdit**[^stackedit]. Don't delete
 A [SQL injection](https://www.owasp.org/index.php/SQL_Injection) attack consists of insertion or "injection" of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data (Insert/Update/Delete), execute administration operations on the database (such as shutdown the DBMS), recover the content of a given file present on the DBMS file system and in some cases issue commands to the operating system. SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input in order to effect the execution of predefined SQL commands.
 
 **The challenge** 
-> - **Test** the app for **SQLi vulnerabilities**,
-> - Try to get the **database version** and **name**. Also get the **user**,
-> - Try to get the **password** for the **database** connector **user** (mysql.user),
-> - Get **all the databases** in the server (database engine),
-> - Get **all the tables** for the app database,
-> - Get **all the columns** for the table storing the app users,
-> - Get **user** and **password** of the app administrator,
-> - Finally **login** into the app with the administrator credentials
+> - **a.** **Test** the app for **SQLi vulnerabilities** {[answer here](challenges/SQLi/a.TESTING.md)},
+> - **b.** Try to get the **database version** and **name**. Also get the **user**,
+> - **c.** Try to get the **password** for the **database** connector **user** (*mysql.user*),
+> - **d.** Get **all the databases** in the server (database engine),
+> - **e.** Get **all the tables** for the app database,
+> - **f.** Get **all the columns** for the table storing the app users,
+> - **g.** Get **user** and **password** of the app administrator,
+> - **h.** Finally **login** into the app with the administrator credentials
 
 **Tip for detecting the vulnerability**
 ```javascript

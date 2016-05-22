@@ -6,5 +6,5 @@
 #
 node_modules/
 INSTRUCTIONS
-configs/db.json
+env/production.json
 npm-debug.log

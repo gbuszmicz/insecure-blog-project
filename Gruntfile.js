@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    db_config: grunt.file.readJSON('configs/db.json'), // Load db info
+    db_config: grunt.file.readJSON('env/production.json'), // Load db
 
     mysqlrunfile: {
       options: {
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
         user: '<%= db_config.mysql.user %>',
         pass: '<%= db_config.mysql.password %>',
         port: '<%= db_config.mysql.port %>',
-        dest: 'configs/',
+        dest: 'backups/',
         databases: [
           '<%= db_config.mysql.database %>'
         ]
