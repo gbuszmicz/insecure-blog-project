@@ -51,8 +51,6 @@ $ node index.js
 
 Hey! I'm your first Markdown document in **StackEdit**[^stackedit]. Don't delete me, I'm very helpful! I can be recovered anyway in the **Utils** tab of the <i class="icon-cog"></i> **Settings** dialog.
 
-----------
-
 ## User guide / Challenges
 #### SQL injection (SQLi)
 -------------
@@ -76,7 +74,9 @@ A [SQL injection](https://www.owasp.org/index.php/SQL_Injection) attack consists
 // Check this code for function getPostById
 // What is wrong with it?
 var postId = req.params.postid;
-var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastname, avatar FROM posts INNER JOIN users ON posts.userId = users.id WHERE posts.id = " +postId;
+var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastname, avatar "+
+          "FROM posts INNER JOIN users ON posts.userId = users.id "+
+          "WHERE posts.id = " +postId;
 db.query(sql, function(err, post) { 
   ... 
 }
@@ -88,16 +88,17 @@ db.query(sql, function(err, post) {
 // Just escape the input: db.escape(user input). This is from node-mysql
 // var postId = req.params.postid;
 var postId = db.escape(req.params.postid);
-var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastname, avatar FROM posts INNER JOIN users ON posts.userId = users.id WHERE posts.id = " +postId;
+var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastname, avatar "+
+          "FROM posts INNER JOIN users ON posts.userId = users.id "+
+          "WHERE posts.id = " +postId;
 db.query(sql, function(err, post) { 
   ... 
 }
 ```
 
 
+## Credits
+This **README.md** was made with: [Stackedit.io](https://stackedit.io/editor)
+
 ## Questions and issues
 Feel free to contact me in [twitter](https://twitter.com/gbuszmicz) or [create an issue](https://github.com/gbuszmicz/insecure-blog-project/issues/new)
-
-> **Credits:**
-> 
->This **README.md** was made with: [Stackedit.io](https://stackedit.io/editor)
