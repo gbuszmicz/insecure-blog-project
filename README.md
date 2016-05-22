@@ -7,7 +7,6 @@ This is an insecure Web application for training and testing Web security. It ha
 </p>
 ## Installation
 #### Clone the repo
-----------
 ```shell
 $ git clone https://github.com/gbuszmicz/insecure-blog-project.git myApp
 $ cd myApp
@@ -15,7 +14,6 @@ $ npm install  # Install Node.js components listed in ./package.json
 ```
 
 #### Create a db config file
-----------
 Before you start you will need to create a database config file:
 ```shell
 configs/db.json
@@ -38,7 +36,6 @@ Here is an example of db.json:
 ```
 
 #### Starting the app
-----------
 The app use [foreman](https://github.com/strongloop/node-foreman). To start it just run:
 ```shell
 $ foreman start
@@ -53,7 +50,6 @@ Hey! I'm your first Markdown document in **StackEdit**[^stackedit]. Don't delete
 
 ## User guide / Challenges
 #### SQL injection (SQLi)
--------------
 
 **What is this vulnerability about** 
 A [SQL injection](https://www.owasp.org/index.php/SQL_Injection) attack consists of insertion or "injection" of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data (Insert/Update/Delete), execute administration operations on the database (such as shutdown the DBMS), recover the content of a given file present on the DBMS file system and in some cases issue commands to the operating system. SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input in order to effect the execution of predefined SQL commands.
@@ -98,7 +94,7 @@ db.query(sql, function(err, post) {
 
 
 ## Credits
-This **README.md** was made with: [Stackedit.io](https://stackedit.io/editor)
+This **README.md** was made with [Stackedit.io](https://stackedit.io/editor)
 
 ## Questions and issues
 Feel free to contact me in [twitter](https://twitter.com/gbuszmicz) or [create an issue](https://github.com/gbuszmicz/insecure-blog-project/issues/new)
