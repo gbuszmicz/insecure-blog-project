@@ -19,7 +19,7 @@ If you are planning on running this app in production mode you have to create a 
 env/production.json
 ```
 
-The production.json file has the same structure that env/development.json file:
+The *production.json* file has the same structure that env/development.json file:
 ```javascript
 {
   "mysql": {
@@ -43,8 +43,6 @@ You can also start the app without foreman:
 ```shell
 $ node index.js
 ```
-
-Hey! I'm your first Markdown document in **StackEdit**[^stackedit]. Don't delete me, I'm very helpful! I can be recovered anyway in the **Utils** tab of the <i class="icon-cog"></i> **Settings** dialog.
 
 ## User guide / Challenges
 #### SQL injection (SQLi)

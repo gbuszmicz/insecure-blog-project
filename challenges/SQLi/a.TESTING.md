@@ -23,7 +23,7 @@ FROM posts INNER JOIN users ON posts.userId = users.id
 WHERE posts.id = 21'
 ```
 
-You can also pass a **condition** that is **true**, like this:
+You can also pass a **condition** that is **true** (1=1), like this:
 ```shell
 http://localhost:8080/p/2 AND 1=1/slug-name-post
 ```
@@ -35,7 +35,7 @@ FROM posts INNER JOIN users ON posts.userId = users.id
 WHERE posts.id = 21 AND 1=1
 ```
 
-Finally you can pass a **condition** that is **false**, like this:
+Finally you can pass a **condition** that is **false** (1=0), like this:
 ```shell
 http://localhost:8080/p/2 AND 1=0/slug-name-post
 ```
