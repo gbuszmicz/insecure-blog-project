@@ -2,6 +2,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
+var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var session = require('express-session'); // No need for cookie-parser since v1.5.0
 var logger = require('./helpers/logger');
@@ -21,6 +22,7 @@ if(process.env.NODE_ENV === 'production') {
   logger.info('-------------------------------------------------------------');
 }
 
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.set('views', __dirname + '/views');
 app.engine('.html', ejs.__express);
 app.set('view engine', 'html');

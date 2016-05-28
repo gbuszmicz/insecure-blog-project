@@ -24,6 +24,7 @@
     "moment": "^2.13.0",
     "mysql": "^2.10.2",
     "sanitize-html": "^1.11.4",
+    "serve-favicon": "^2.3.0",
     "winston": "^2.2.0"
   },
   "devDependencies": {
