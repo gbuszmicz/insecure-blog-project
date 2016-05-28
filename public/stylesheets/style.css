@@ -286,9 +286,6 @@ body {
     font-size: 5rem;
   }
 }
-.intro-header .site-heading .site-logo img {
-  max-height: 200px;
-}
 article {
   position: relative;
   max-width: 768px;
