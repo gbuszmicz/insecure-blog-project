@@ -1,3 +1,11 @@
+/***********************
+ * Color palette
+ * 
+ * blue: #007dc2;
+ * light blue: #1a8ac8;
+ *
+ ***********************/
+
 /******************************************************
   Elements
  ******************************************************/
@@ -41,7 +49,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #0085a1;
+  color: #007dc2;
 }
 a img:hover,
 a img:focus {
@@ -61,12 +69,12 @@ hr.small {
 ::-moz-selection {
   color: white;
   text-shadow: none;
-  background: #0085a1;
+  background: #007dc2;
 }
 ::selection {
   color: white;
   text-shadow: none;
-  background: #0085a1;
+  background: #007dc2;
 }
 img::selection {
   color: white;
@@ -77,7 +85,7 @@ img::-moz-selection {
   background: transparent;
 }
 body {
-  webkit-tap-highlight-color: #0085a1;
+  webkit-tap-highlight-color: #007dc2;
 }
 
 /******************************************************
@@ -156,14 +164,14 @@ body {
   }
   .navbar-custom.is-fixed .navbar-brand:hover,
   .navbar-custom.is-fixed .navbar-brand:focus {
-    color: #0085a1;
+    color: #007dc2;
   }
   .navbar-custom.is-fixed .nav li a {
     color: #404040;
   }
   .navbar-custom.is-fixed .nav li a:hover,
   .navbar-custom.is-fixed .nav li a:focus {
-    color: #0085a1;
+    color: #007dc2;
   }
   .navbar-custom.is-visible {
     /* if the user changes the scrolling direction, we show the header */
@@ -178,7 +186,7 @@ body {
 .navbar-default .navbar-nav>.open>a:focus, 
 .navbar-default .navbar-nav>.open>a:hover {
   background-color: transparent;
-  color: #0085a1;
+  color: #007dc2;
   text-decoration: underline;
 }
 .dropdown-menu>li>a {
@@ -190,7 +198,7 @@ body {
   border-radius: none;
 }
 .dropdown-menu>li>a:hover {
-  background-color: #0085a1;
+  background-color: #007dc2;
 }
 @media only screen and (min-width: 768px) {
   .navbar-custom .nav li a {
@@ -235,7 +243,7 @@ body {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: underline;
-  color: #0085a1;
+  color: #007dc2;
 }
 .pager .disabled > a,
 .pager .disabled > a:hover,
@@ -370,7 +378,7 @@ article {
 .post-content > a:hover,
 .post-content > a:focus {
   text-decoration: none;
-  color: #0085a1;
+  color: #007dc2;
 }
 .post-footer {
   margin-bottom: .5rem;
@@ -412,6 +420,10 @@ blockquote p {
  }
  footer a {
   color: #aaa;
+ }
+ footer a:focus,
+ footer a:hover {
+  color: #1a8ac8;
  }
  footer .list-inline {
   margin: 0;
@@ -509,7 +521,7 @@ body.login .submit > input {
 body.login .submit > input:hover,
 body.login .submit > input:focus {
   text-decoration: underline;
-  color: #0085a1;
+  color: #007dc2;
 }
 
 /******************************************************
@@ -544,7 +556,7 @@ body.login .submit > input:focus {
 }
 .profile-header .profile-heading .profile-description a:hover,
 .profile-header .profile-heading .profile-description a:focus {
-  color: #0085a1;
+  color: #007dc2;
 }
 @media only screen and (min-width: 768px) {
   .profile-header .profile-heading h1 {
@@ -649,5 +661,5 @@ body.add-edit-post .submit > input {
 body.add-edit-post .submit > input:hover,
 body.add-edit-post .submit > input:focus {
   text-decoration: underline;
-  color: #0085a1;
+  color: #007dc2;
 }
