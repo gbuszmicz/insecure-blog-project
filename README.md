@@ -5,6 +5,11 @@ This is an insecure Web application for training and testing Web security. It ha
 <p align="center">
   <img src ="https://raw.githubusercontent.com/gbuszmicz/insecure-blog-project/master/public/images/screenshot.png" />
 </p>
+## Demo
+Check it out the [demo](http://insecureblog.herokuapp.com/) online. Have fun playing with the vulnerabilities!
+
+We will be uploading new vulnerabilities all weeks. We will try to cover all [OWASP Top 10 Common Vulnerabilities](https://www.owasp.org/index.php/Top_10_2013-Top_10), or at least most of them.
+
 ## Installation
 #### Clone the repo
 ```shell
