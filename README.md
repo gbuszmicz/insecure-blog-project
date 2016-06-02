@@ -6,7 +6,7 @@ This is an insecure Web application for training and testing Web security. It ha
   <img src ="https://raw.githubusercontent.com/gbuszmicz/insecure-blog-project/master/public/images/screenshot.png" />
 </p>
 ## Demo
-Check it out the [demo](http://insecureblog.herokuapp.com/) online. Have fun playing with the vulnerabilities!
+Check it out the [demo](http://insecureblog.herokuapp.com/) online. Have fun playing around. And please don't break anything!
 
 We will be uploading new vulnerabilities all weeks. We will try to cover all [OWASP Top 10 Common Vulnerabilities](https://www.owasp.org/index.php/Top_10_2013-Top_10), or at least most of them.
 
@@ -65,20 +65,6 @@ A [SQL injection](https://www.owasp.org/index.php/SQL_Injection) attack consists
 > - **f.** Get **all the columns** for the table storing the app users,
 > - **g.** Get **user** and **password** of the app administrator,
 > - **h.** Finally **login** into the app with the administrator credentials
-
-**Tip for detecting the vulnerability**
-```javascript
-// controllers/ctlPost.js
-// Check this code for function getPostById
-// What is wrong with it?
-var postId = req.params.postid;
-var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastname, avatar "+
-          "FROM posts INNER JOIN users ON posts.userId = users.id "+
-          "WHERE posts.id = " +postId;
-db.query(sql, function(err, post) { 
-  ... 
-}
-```
 
 **How to fix it**
 ```javascript
