@@ -1,3 +1,5 @@
+# (b) Get database version, name and user
+
 For getting database version you need to be able to get information out throuth the Web interface.
 To do that you have to use the **UNION** statement of MySQL. But *there is a catch**: the UNION statement requieres that the number of columns in the first query to be the same that in the second query.
 So you first have to identify the number of columns of a single post.
