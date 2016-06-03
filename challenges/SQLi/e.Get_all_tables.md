@@ -18,7 +18,16 @@ where:
 
 > **Note:**
 >   is important to use **distinct(table_name)** instead of **table_name** alone, because there is one table_name for each column of each table. 
-> This means that if one table has 10 columns there will be 10 rows in the table_name column
+> This means that if one table has 10 columns there will be 10 rows in the table_name column.
+> Check this out. This is **information_schema.columns**:
+>
+> | TABLE_SCHEMA  | TABLE_NAME    | COLUMN_NAME  |
+> | ------------- |:-------------:| ------------:|
+> | insecure_blog | posts         | id           |
+> | insecure_blog | posts         | title        |
+> | insecure_blog | posts         | body         |
+> | insecure_blog | posts         | date         |
+> | insecure_blog | posts         | status       |
 
 
 Then we inject the query in the browser:
