@@ -62,7 +62,7 @@ A [SQL injection](https://www.owasp.org/index.php/SQL_Injection) attack consists
 > - **c.** Try to get the **password** for the **database** connector **user** (*mysql.user*) {[answer here](challenges/SQLi/c.Password_database_user.md)},
 > - **d.** Get **all the databases** in the server (database engine) {[answer here](challenges/SQLi/d.Get_all_databases.md)},
 > - **e.** Get **all the tables** for the app database {[answer here](challenges/SQLi/e.Get_all_tables.md)},
-> - **f.** Get **all the columns** for the table storing the app users,
+> - **f.** Get **all the columns** for the table storing the app users {[answer here](challenges/SQLi/f.Get_users_columns.md)},
 > - **g.** Get **user** and **password** of the app administrator,
 > - **h.** Finally **login** into the app with the administrator credentials
 
