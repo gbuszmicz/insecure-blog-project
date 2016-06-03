@@ -21,6 +21,10 @@ http://localhost:8080/p/2 UNION SELECT 1,(SELECT authentication_string FROM mysq
 ```
 
 > **Note:** Depending on the version of the MySQL server **authentication_string** may be **password**
+> The Password column of the mysql.user table was removed in MySQL 5.7.6. 
+> All credentials are stored in the authentication_string column, 
+> including those formerly stored in the Password column.
+> Ref.: [Changes Affecting Downgrades from MySQL 5.7](http://dev.mysql.com/doc/refman/5.7/en/downgrading-to-previous-series.html)
 
 
 The result will be something like this: 
