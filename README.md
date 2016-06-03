@@ -52,7 +52,7 @@ $ node index.js
 ## User guide / Challenges
 #### SQL injection (SQLi)
 
-**What is this vulnerability about**
+##### What is this vulnerability about
 
 A [SQL injection](https://www.owasp.org/index.php/SQL_Injection) attack consists of insertion or "injection" of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data (Insert/Update/Delete), execute administration operations on the database (such as shutdown the DBMS), recover the content of a given file present on the DBMS file system and in some cases issue commands to the operating system. SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input in order to effect the execution of predefined SQL commands.
 
@@ -66,14 +66,17 @@ A [SQL injection](https://www.owasp.org/index.php/SQL_Injection) attack consists
 > - **g.** Get **user** and **password** of the app administrator,
 > - **h.** Finally **login** into the app with the administrator credentials
 
-**How to fix it**
-To fix this vulnerability you have to **escape** the user input **before** pass it to the database. Most database's clients have some sort of **escape function** to accomplish this. Or you can do it yourself.
+##### How to fix it
+
+To fix this vulnerability you have to **escape** the user input **before** pass it to the database. Most database's clients have some sort of **escape function** to accomplish this. 
+You can also do it yourself, you only need to know what type of value you are getting from the view or any untrusted source. 
+[Underscore.js](http://underscorejs.org/) is a good library for this.
 
 ```javascript
 // controllers/ctlPost.js
 // Just escape the input: db.escape(user input). This is from node-mysql
 // var postId = req.params.postid;
-// **db** is the mysql connection. Check [helpers/mysql.js](helpers/mysql.js) for more details
+// db is the mysql connection. Check helpers/mysql.js file for more details
 var postId = db.escape(req.params.postid);
 var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastname, avatar "+
           "FROM posts INNER JOIN users ON posts.userId = users.id "+
