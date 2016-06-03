@@ -28,7 +28,7 @@ where:
 > | insecure_blog | posts         | body         |
 > | insecure_blog | posts         | date         |
 > | insecure_blog | posts         | status       |
-
+>
 
 Then we inject the query in the browser:
 ```shell
