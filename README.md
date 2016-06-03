@@ -73,10 +73,10 @@ You can also do it yourself, you only need to know what type of value you are ge
 [Underscore.js](http://underscorejs.org/) is a good library for this.
 
 ```javascript
-// controllers/ctlPost.js
+// This code is from controllers/ctlPost.js
 // Just escape the input: db.escape(user input). This is from node-mysql
+// db is the mysql connection instance. Check helpers/mysql.js file for more details
 // var postId = req.params.postid;
-// db is the mysql connection. Check helpers/mysql.js file for more details
 var postId = db.escape(req.params.postid);
 var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastname, avatar "+
           "FROM posts INNER JOIN users ON posts.userId = users.id "+
