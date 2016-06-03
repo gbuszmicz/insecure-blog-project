@@ -13,8 +13,8 @@ SELECT distinct(table_name) FROM information_schema.columns WHERE table_schema =
 ```
 
 where:
-**table_name** is the column where the tables get stored,
-**table_schema** is the column where the databases get stored.
+- **table_name** is the column where the tables get stored,
+- **table_schema** is the column where the databases get stored.
 
 > **Note:**
 >   is important to use **distinct(table_name)** because there is one table_name for each column of each table. 
@@ -42,9 +42,9 @@ And keep **increasing the OFFSET** to get all the tables.
 
 If all went well, we will have 3 tables:
 
-[1]: Posts
-[2]: Comments
-[3]: Users
+- Posts
+- Comments
+- Users
 
 Of course we will focous in the **Users table**.
 
