@@ -50,7 +50,7 @@ http://localhost:8080/p/2 UNION SELECT 1,(SELECT distinct(table_name) FROM infor
 
 And keep **increasing the OFFSET** value to get all the tables.
 
-----------
+______
 
 If all went well, we will have 3 tables:
 
