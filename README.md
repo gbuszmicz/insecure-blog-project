@@ -88,6 +88,7 @@ db.query(sql, function(err, post) {
 
 ##### More about MySQL Injection
 
+- [OWASP - SQL injection](https://www.owasp.org/index.php/SQL_Injection)
 - [W3School - SQL Injection](http://www.w3schools.com/sql/sql_injection.asp)
 - [Acunetix- SQL Injection (SQLi)](http://www.acunetix.com/websitesecurity/sql-injection/)
 - [Pentestmonkey - MySQL SQL Injection Cheat Sheet](http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet)
