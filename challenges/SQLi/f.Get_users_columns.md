@@ -52,6 +52,7 @@ If all went well, we will have 8 columns:
 - avatar
 - description
 
-**isAdmin** looks like a column with a boolean value. One could guess that all admin users will have this column set to **true** or **1**.
+**isAdmin** looks like a column with a boolean value. 
+One could guess that all *Administrator users* will have this field set to **true** or **1**.
 
-So next step will be getting all users with *isAdmin=true* and then getting the passwords.
+So next step will be getting all users with **_isAdmin=true_** and then getting their **_usernames_** and **_passwords_**.

