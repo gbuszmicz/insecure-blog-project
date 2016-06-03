@@ -86,6 +86,14 @@ db.query(sql, function(err, post) {
 }
 ```
 
+##### More about MySQL Injection
+
+[W3School - SQL Injection](http://www.w3schools.com/sql/sql_injection.asp)
+[Acunetix- SQL Injection (SQLi)](http://www.acunetix.com/websitesecurity/sql-injection/)
+[Pentestmonkey - MySQL SQL Injection Cheat Sheet](http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet)
+[Pentestmonkey - MSSQL Injection Cheat Sheet](http://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet)
+[Pentestmonkey - Postgres SQL Injection Cheat Sheet](http://pentestmonkey.net/cheat-sheet/sql-injection/postgres-sql-injection-cheat-sheet)
+
 
 ## Credits
 This **README.md** was made with [Stackedit.io](https://stackedit.io/editor)
