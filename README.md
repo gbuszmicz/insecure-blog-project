@@ -67,10 +67,13 @@ A [SQL injection](https://www.owasp.org/index.php/SQL_Injection) attack consists
 > - **h.** Finally **login** into the app with the administrator credentials
 
 **How to fix it**
+To fix this vulnerability you have to **escape** the user input **before** pass it to the database. Most database's clients have some sort of **escape function** to accomplish this. Or you can do it yourself.
+
 ```javascript
 // controllers/ctlPost.js
 // Just escape the input: db.escape(user input). This is from node-mysql
 // var postId = req.params.postid;
+// **db** is the mysql connection. Check [helpers/mysql.js](helpers/mysql.js) for more details
 var postId = db.escape(req.params.postid);
 var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastname, avatar "+
           "FROM posts INNER JOIN users ON posts.userId = users.id "+

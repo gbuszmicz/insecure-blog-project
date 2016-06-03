@@ -17,6 +17,7 @@ where:
 - **table_schema** is the column where the database's name get stored
 
 > **Note:**
+>
 >   is important to use **distinct(table_name)** instead of **table_name** alone, because there is one table_name for each column of each table. 
 > This means that if one table has 10 columns there will be 10 rows in the table_name column.
 > Check this out. This is **information_schema.columns**:
