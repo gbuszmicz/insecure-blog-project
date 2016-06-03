@@ -77,7 +77,7 @@ You can also do it yourself, you only need to know what type of value you are ge
 // Just escape the input: db.escape(user input). This is from node-mysql
 // db is the mysql connection instance. Check helpers/mysql.js file for more details
 //
-// var postId = req.params.postid; // => Old unescape var!!
+// var postId = req.params.postid; // => Old unescaped var!!
 var postId = db.escape(req.params.postid); // New and beautiful escaped var!!
 var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastname, avatar "+
           "FROM posts INNER JOIN users ON posts.userId = users.id "+
