@@ -35,4 +35,9 @@ module.exports = function(app) {
     var len = parseInt(Math.random() * (maxLen - minLen) + minLen);
     return (typeof str === 'string' && str.length > maxLen ? str.substring(0,len)+"..." : str)
   }
+
+  // ToLowerCase
+  app.locals.toLowerCase = function(str) {
+    return str.toLowerCase();
+  }
 }

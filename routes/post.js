@@ -18,6 +18,7 @@ router.get('/:postid/delete', isAuthenticated, ctlPost.getDelete);
 router.get('/:postid/:slug/edit', isAuthenticated, ctlPost.getEdit);    // Render update post page
 router.post('/:postid/:slug/edit', isAuthenticated, ctlPost.postEdit);  // Update a post
 
+router.get('/:postid/:slug/:readtime', ctlPost.getPostById);
 router.get('/:postid/:slug?', ctlPost.getPostById);
 
 module.exports = router;

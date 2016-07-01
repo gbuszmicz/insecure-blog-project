@@ -10,11 +10,11 @@
   "author": "Gonzalo F. Buszmicz <gbuszmicz@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "eslint": "node_modules/eslint/bin/eslint.js controllers",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eslint": "node_modules/eslint/bin/eslint.js controllers"
   },
   "dependencies": {
     "body-parser": "^1.15.0",
+    "connect-redis": "^3.0.2",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "express-rate-limit": "^2.1.2",
@@ -23,6 +23,7 @@
     "joi": "^8.0.5",
     "moment": "^2.13.0",
     "mysql": "^2.10.2",
+    "redis": "^2.6.0-2",
     "sanitize-html": "^1.11.4",
     "serve-favicon": "^2.3.0",
     "winston": "^2.2.0"

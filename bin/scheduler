@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var grunt = require('grunt');
+
+grunt.tasks(['db_restore'], {}, function() {
+  grunt.log.ok('Done running tasks.');
+});

@@ -8,7 +8,7 @@ This is an insecure Web application for training and testing Web security. It ha
 ## Demo
 Check it out the [demo](http://insecureblog.herokuapp.com/) online. Have fun playing around. And please don't break anything!
 
-I will keep uploading new vulnerabilities every month. I´ll try to cover all [OWASP Top 10 Common Vulnerabilities](https://www.owasp.org/index.php/Top_10_2013-Top_10), or at least most of them.
+I will keep uploading new vulnerabilities. I´ll try to cover all [OWASP Top 10 Common Vulnerabilities](https://www.owasp.org/index.php/Top_10_2013-Top_10), or at least most of them.
 
 ## Installation
 #### Clone the repo
@@ -100,8 +100,10 @@ db.query(sql, function(err, post) {
 ## Credits
 This **README.md** was made with [Stackedit.io](https://stackedit.io/editor)
 
+
 ## Be a part of the project
 If you want to submit some code with **vulnerabilities**, or may be try **React** for the views, or pretty much anything you might think, please contact me on [twitter](https://twitter.com/gbuszmicz)
+
 
 ## Questions and issues
 Feel free to contact me on [twitter](https://twitter.com/gbuszmicz) or [create an issue](https://github.com/gbuszmicz/insecure-blog-project/issues/new)

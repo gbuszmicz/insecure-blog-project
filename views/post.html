@@ -1,18 +1,20 @@
 <!DOCTYPE html>
   <head>
     <% include ./partials/header.html %>
+    <% posts.forEach(function(post) { %>
     <title><%= post.title %></title>
+    <% }) %>
+
   </head>
-  <body>
+  <body class="single-post">
     <% include ./partials/navbar.html %>
-    <% include ./partials/page-header.html %>
 
     <!-- Main Content -->
     <div class="container post-wrapper">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
-          <article id="post-<%= post.id %>" class="post status-<%= post.status %>">
+        <% posts.forEach(function(post) { %>
+          <article id="post-<%= post.id %>" class="post status-<%= toLowerCase(post.status) %>">
             <section class="post-header">
               <div class="post-author">
                 <a href="/<%= post.username %>">
@@ -51,7 +53,7 @@
               </span>
             </section>
           </article>
-
+          <% }) %>
         </div>
       </div>
     </div>

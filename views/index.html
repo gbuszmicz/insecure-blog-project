@@ -20,8 +20,8 @@
         <% } %>
 
         <% posts.forEach(function(post) { %>
-          <article id="post-<%= post.id %>" class="post status-<%= post.status %>" 
-            data-target="/p/<%= post.id %>/<%= slug(post.title) %>">
+          <article id="post-<%= post.id %>" class="post status-<%= toLowerCase(post.status) %>" 
+            data-target="/p/<%= post.id %>/<%= slug(post.title) %>/readtime">
             <section class="post-header">
               <div class="post-author">
                 <a href="/<%= post.username %>">

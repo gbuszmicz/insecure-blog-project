@@ -84,7 +84,8 @@ exports.getEdit = function(req, res) {
 exports.postEdit = function(req, res) {
   var title = req.body.title;
   var body = req.body.body;
-  var body = req.body.tags;
+  var tags = req.body.tags;
+
   var sql  = "UPDATE posts SET title='" +title+ "', body='" +body+ "', tags='" +tags+ "' "+
              "WHERE id='" +req.params.postid+ "'";
   // For testing log the query
@@ -114,11 +115,11 @@ exports.getPostById = function(req, res) {
   // var postId = db.escape(req.params.postid);
   // var postId = parseInt(req.params.postid,10);
   var postId = req.params.postid;
-  var sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar FROM posts "+
+  var sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar,status FROM posts "+
              "INNER JOIN users ON posts.userId = users.id "+
              "WHERE posts.id = " +postId;
   // For testing log the query
-  logger.debug(sql)
+  if(!req.params.readtime) logger.debug(sql)
 
   db.query(sql, function(err, post) {
     if(err) {
@@ -137,8 +138,9 @@ exports.getPostById = function(req, res) {
     //   p.body = sanitizeHtml(p.body, defaultSanitizeOptions),
     //   p.title = sanitizeHtml(p.title, defaultSanitizeOptions)
     // })
+    // console.log(post[1])
     res.render('post', {
-      post:post[0]
+      posts:post
     })
   })
 }

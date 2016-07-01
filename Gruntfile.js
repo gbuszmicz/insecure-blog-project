@@ -14,7 +14,7 @@ module.exports = function(grunt) {
         }
       },
       populateDb: {
-        src: ['backups/dump.sql']
+        src: ['backups/dump_2016-05-28.sql']
       }
     },
     

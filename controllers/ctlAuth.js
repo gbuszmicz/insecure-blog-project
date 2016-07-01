@@ -16,7 +16,7 @@ exports.postLogin = function(req, res) {
   // var sql  = "SELECT * FROM users WHERE username = " + user + " AND password = " + pass;
   var user = req.body.username;
   var pass = req.body.password;
-  var sql  = "SELECT * FROM users WHERE username = '" + user + "' AND password = '" + pass + "'";
+  var sql  = "SELECT * FROM users WHERE username = '" + user + "' AND password = '" + pass + "' LIMIT 1";
   
   logger.debug(sql)
   db.query(sql, function(err, user) {

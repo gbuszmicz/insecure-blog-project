@@ -113,6 +113,7 @@ body {
   color: #15A8C7;
   text-decoration: underline;
 }
+
 @media only screen and (min-width: 768px) {
   .navbar-custom {
     background: transparent;
@@ -134,7 +135,17 @@ body {
   .navbar-custom .nav li a:focus {
     color: rgba(255, 255, 255, 0.8);
   }
+  .navbar-custom #write-button>a {
+  margin-top: 2px;
+  }
+  .navbar-custom #write-button>a>span {
+    background-color: #1a8ac8;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-top: 5px;
+  }
 }
+
 @media only screen and (min-width: 1170px) {
   .navbar-custom {
     -webkit-transition: background-color 0.3s;
@@ -451,7 +462,7 @@ body.single-post article {
 .form-control {
   display: block;
   width: 100%;
-  padding: 22px 26px;
+  padding: 5px 25px;
   font-size: 2rem;
   line-height: 1.4rem;
   color: #555;
@@ -506,6 +517,10 @@ body.login input:-ms-input-placeholder {
 body.login .submit {
   text-align: center;
   margin-top: 30px;
+}
+body.login .submit > input.form-control {
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 1rem;
 }
 body.login .submit > input {
   font-family: 'Noto Serif',serif;
@@ -596,7 +611,8 @@ body.login textarea:-ms-input-placeholder {
 
 body.add-edit-post .form-control {
   width: 100%;
-  padding: 30px 20px;
+  padding: 0px 20px;
+  margin: 10px 0;
   color: #555;
   background: #fff;
   border: 0;
@@ -662,4 +678,8 @@ body.add-edit-post .submit > input:hover,
 body.add-edit-post .submit > input:focus {
   text-decoration: underline;
   color: #007dc2;
+}
+body.add-edit-post #tags {
+  font-style: italic;
+  color: #666;
 }

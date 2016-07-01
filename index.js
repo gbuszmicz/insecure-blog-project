@@ -5,6 +5,8 @@ var express = require('express');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var session = require('express-session'); // No need for cookie-parser since v1.5.0
+var RedisStore = require('connect-redis')(session); // production only
+var redis = require("redis");
 var logger = require('./helpers/logger');
 var errors = require('./helpers/nodeErrors');
 var authLimiter = require('./middlewares/rateLimit').authLimiter; // Limit for auth routes
@@ -32,7 +34,15 @@ app.use(bodyParser.urlencoded({
 }));
 app.set('json spaces', 2);
 app.set('trust proxy', 1) // Trust first proxy
+
+var config = require('./env/'+process.env.NODE_ENV+'.json') || {};
+var redisClient = process.env.NODE_ENV == 'development' ? {} : redis.createClient(config.redis.url);
+var redisOptions = {
+  client: redisClient
+}
+var sessionStore = process.env.NODE_ENV == 'development' ? new session.MemoryStore() : new RedisStore(redisOptions);
 app.use(session({
+  store: sessionStore,
   secret: 'Super secret session',
   resave: true,
   saveUninitialized: true,
@@ -74,7 +84,7 @@ app.use('/', homeRoutes);
 app.use('/auth', authRoutes); 
 app.use('/p', postRoutes);
 
-var port = 8080;
+var port = process.env.PORT || 8080;
 app.listen(port);
 logger.info('App ready, listening on port: '+port)
-logger.info('App mode: '+process.env.MODE)
+logger.info('App mode: '+process.env.NODE_ENV)

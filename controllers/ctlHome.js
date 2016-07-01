@@ -23,19 +23,20 @@ exports.getSearch = function (req, res) {
   if(startsWith(keyword, 'tag/')) {
     logger.debug('-- searching a tag')
     var searchKeyword = keyword.split('/')[1];
-    sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar FROM posts "+
+    sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar,status FROM posts "+
           "JOIN users ON posts.userId = users.id "+
           "WHERE posts.status = 'Published' "+
           "AND ("+
           "tags LIKE '%" +searchKeyword+ "%' "+
           ") "+
           "ORDER BY posts.date DESC";
+    logger.debug(sql)
   } 
   // Check if keyword is a user
   else if(startsWith(keyword, 'user/')) {
     logger.debug('-- searching a user')
     var searchKeyword = keyword.split('/')[1];
-    sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar FROM posts "+
+    sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar,status FROM posts "+
           "JOIN users ON posts.userId = users.id "+
           "WHERE posts.status = 'Published' "+
           "AND ("+
@@ -45,7 +46,7 @@ exports.getSearch = function (req, res) {
   } 
   // Search everywhere
   else {
-    sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar FROM posts "+
+    sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar,status FROM posts "+
           "JOIN users ON posts.userId = users.id "+
           "WHERE posts.status = 'Published' "+
           "AND ("+
@@ -104,7 +105,7 @@ exports.getHome = function (req, res) {
     // --- start pagination
     numRows = results[0].numRows;
     numPages = Math.ceil(numRows / numPerPage);
-    console.log('number of pages:', numPages + ' (selected page: '+page+')');
+    // logger.debug('number of pages:', numPages + ' (selected page: '+page+')');
     if(page > numPages) {
       return res.send(
         returnJson('Error', '404 - Page not found')
@@ -112,7 +113,7 @@ exports.getHome = function (req, res) {
     }
     // --- end pagination
 
-    var sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar FROM posts "+
+    var sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar,status FROM posts "+
               "JOIN users ON posts.userId = users.id "+
               "WHERE posts.status = 'Published' "+
               "ORDER BY posts.date DESC "+

