@@ -24,17 +24,24 @@ If you are planning on running this app in production mode you have to create a 
 env/production.json
 ```
 
-The *production.json* file has the same structure that env/development.json file:
+The *production.json* file has the same structure that env/development.json file plus *redis* information. For example:
 ```javascript
 {
   "mysql": {
-    "_comment": "MySQL database running in localhost for testing",
-    "host": "localhost",
-    "port": "3306",
+    "_comment": "MySQL database running in production mode",
+    "host": "somepublichost.cloud.com",
+    "port": "33306",
     "user": "root",
-    "password": "gonzalo",
+    "password": "superSecretPassword",
     "database": "insecure_blog"
-  }
+  },
+  "redis": {
+    "_comment": "Redis to go for production",
+    "host": "asjdklasdjlakñsdjañl.redistogo.com",
+    "port": "10460",
+    "pass": "8192301j1239123jio121",
+    "url": "redis://redistogo:8192301j1239123jio121@viperfish.redistogo.com:10460/"
+   }
 }
 ```
 
