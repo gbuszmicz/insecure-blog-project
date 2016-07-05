@@ -109,18 +109,23 @@ exports.postEdit = function(req, res) {
   })
 }
 
+ 
 // TODO: if no slug in URL => redirect to /postid/slug (check HTML5 history.pushState)
 // GET /p/5/post-five-slug-title
 exports.getPostById = function(req, res) {
+
+  // 1. Solution #1: Escape user input
   // var postId = db.escape(req.params.postid);
-  // var postId = parseInt(req.params.postid,10);
   var postId = req.params.postid;
   var sql = "SELECT posts.id,title,body,date,tags,username,firstname,lastname,avatar,status FROM posts "+
              "INNER JOIN users ON posts.userId = users.id "+
              "WHERE posts.id = " +postId;
   // For testing log the query
-  if(!req.params.readtime) logger.debug(sql)
+  // if(!req.params.readtime) logger.debug(sql)
 
+  // Solution #2: Parameterized SQL queries
+  // First change the query. var sql = "SELECT posts.id ... WHERE posts.id = $1"
+  // db.query(sql, [postId], function(err, post) { 
   db.query(sql, function(err, post) {
     if(err) {
       return res.send(
@@ -129,9 +134,10 @@ exports.getPostById = function(req, res) {
     }
     // No post found
     if(post.length === 0) {
-      return res.send(
-        returnJson('Error', '404 - Post not found')
-      )
+      var error = { code:'404', message:'Post not found' };
+      return res.render('errors/generic', {
+        error:error
+      });
     }
     // Sanitize response
     // post.forEach(function(p) {

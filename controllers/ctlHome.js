@@ -30,7 +30,8 @@ exports.getSearch = function (req, res) {
           "tags LIKE '%" +searchKeyword+ "%' "+
           ") "+
           "ORDER BY posts.date DESC";
-    logger.debug(sql)
+    // Debug SQL query
+    // logger.debug(sql)
   } 
   // Check if keyword is a user
   else if(startsWith(keyword, 'user/')) {

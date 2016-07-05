@@ -18,7 +18,8 @@ exports.postLogin = function(req, res) {
   var pass = req.body.password;
   var sql  = "SELECT * FROM users WHERE username = '" + user + "' AND password = '" + pass + "' LIMIT 1";
   
-  logger.debug(sql)
+  // Debug SQL query
+  // logger.debug(sql) 
   db.query(sql, function(err, user) {
     if(err) {
       logger.error(err.message);
