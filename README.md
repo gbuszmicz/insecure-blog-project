@@ -75,7 +75,8 @@ A [SQL injection](https://www.owasp.org/index.php/SQL_Injection) attack consists
 
 ##### How to fix it
 
-** Solution #1: escape the input. **
+**Solution #1: escape the input.**
+
 To fix this vulnerability you have to **escape** the user input **before** pass it to the database. Most database's clients have some sort of **escape function** to accomplish this. 
 You can also do it yourself, you only need to know what type of value you are getting from the view or any untrusted source. 
 [Underscore.js](http://underscorejs.org/) is a good library for this.
@@ -93,8 +94,10 @@ var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastna
 db.query(sql, function(err, post) { 
   ... 
 })
+```
 
-** Solution #2: parameterized SQL queries. **
+**Solution #2: parameterized SQL queries.**
+
 Parameterize SQL queries is an even better way to secure your application. Instead of building a SQL statement using concatenation, we let a function replace the parameters within the statement and perform sanitation.
 
 ```javascript
