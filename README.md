@@ -75,14 +75,13 @@ A [SQL injection](https://www.owasp.org/index.php/SQL_Injection) attack consists
 
 ##### How to fix it
 
+** Solution #1: escape the input. **
 To fix this vulnerability you have to **escape** the user input **before** pass it to the database. Most database's clients have some sort of **escape function** to accomplish this. 
 You can also do it yourself, you only need to know what type of value you are getting from the view or any untrusted source. 
 [Underscore.js](http://underscorejs.org/) is a good library for this.
 
 ```javascript
 // This code is from controllers/ctlPost.js
-// -----
-// Solution #1: escape the input.
 // db.escape(user input). This is from node-mysql
 // db is the mysql connection instance. Check helpers/mysql.js file for more details
 //
@@ -94,9 +93,12 @@ var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastna
 db.query(sql, function(err, post) { 
   ... 
 })
-// -----
-// Solution #2: parameterized SQL queries.
-//
+
+** Solution #2: parameterized SQL queries. **
+Parameterize SQL queries is an even better way to secure your application. Instead of building a SQL statement using concatenation, we let a function replace the parameters within the statement and perform sanitation.
+
+```javascript
+// This code is from controllers/ctlPost.js
 var postId = req.params.postid; 
 var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastname, avatar "+
           "FROM posts INNER JOIN users ON posts.userId = users.id "+
