@@ -105,7 +105,7 @@ Parameterize SQL queries is an even better way to secure your application. Inste
 var postId = req.params.postid; 
 var sql = "SELECT posts.id, title, body, date, tags, username, firstname, lastname, avatar "+
           "FROM posts INNER JOIN users ON posts.userId = users.id "+
-          "WHERE posts.id = $1";
+          "WHERE posts.id = ?";
 db.query(sql, [postId], function(err, post) { 
   ... 
 })
