@@ -124,7 +124,7 @@ exports.getPostById = function(req, res) {
   // if(!req.params.readtime) logger.debug(sql)
 
   // Solution #2: Parameterized SQL queries
-  // First change the query. var sql = "SELECT posts.id ... WHERE posts.id = $1"
+  // First change the query. var sql = "SELECT posts.id ... WHERE posts.id = ?"
   // db.query(sql, [postId], function(err, post) { 
   db.query(sql, function(err, post) {
     if(err) {
